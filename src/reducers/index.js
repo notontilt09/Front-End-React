@@ -22,8 +22,8 @@ const initialState = {
         username: '',
         password: ''
     },
-    token: '',
-    isLoggedIn: false
+    isLoggedIn: false,
+    guideId: null 
 };
 
 const reducer = (state = initialState, action) =>{
@@ -53,8 +53,8 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 isRegistering: false,
-                token: action.payload.token,
-                isLoggedIn: true
+                isLoggedIn: true,
+                guideId: action.payload.user.id
             }
         case REGISTER_USER_FAIL:
             return {
@@ -70,8 +70,8 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 isLoggingIn: false,
-                token: action.payload.token,
-                isLoggedIn: true
+                isLoggedIn: true,
+                guideId: action.payload.user.id
             }
         case LOGIN_USER_FAIL:
             return {

@@ -10,6 +10,10 @@ import {
 } from '../actions'
 
 class LoginView extends React.Component {
+    componentDidMount() {
+        localStorage.removeItem('token');
+    }
+    
     handleRegisterChanges = e => {
         this.props.handleRegisterChanges(e)
     }
