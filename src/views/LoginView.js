@@ -10,10 +10,6 @@ import {
 } from '../actions'
 
 class LoginView extends React.Component {
-    componentDidUpdate() {
-        this.props.isLoggedIn && this.props.history.push('/user')
-    }
-
     handleRegisterChanges = e => {
         this.props.handleRegisterChanges(e)
     }

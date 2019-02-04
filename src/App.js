@@ -11,7 +11,7 @@ import './App.css';
 class App extends Component {
   componentWillReceiveProps = newProps => {
     if(newProps.isLoggedIn !== this.props.isLoggedIn){
-      this.props.history.push('/user');
+      this.props.history.push('/trips');
     }
   }
 
@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path='/login' component={LoginView} />
-        <Route path='/user' component={TripsView} />
+        <Route path='/trips' component={TripsView} />
       </div>
     );
   }
