@@ -13,11 +13,11 @@ const Login = props => {
                 <input required type='password' name='password' placeholder="password" />
                 <button type="submit">Login</button>
             </form>
-            <form className='register'>
-                <input required type='text' name='name' placeholder="Enter your name" />
-                <input required type='text' name='username' placeholder="Choose a username" />
-                <input required type='password' name='password' placeholder="Pick a strong password" />
-                <input required type='password' name='password-match' placeholder="Confirm Password" />
+            <form onSubmit={(e) => props.handleRegister(e, props.newUser.name, props.newUser.username, props.newUser.pw1, props.newUser.pw2)} className='register'>
+                <input onChange={props.handleRegisterChanges} value={props.newUser.name} required type='text' name='name' placeholder="Enter your name" />
+                <input onChange={props.handleRegisterChanges} value={props.newUser.username} required type='text' name='username' placeholder="Choose a username" />
+                <input onChange={props.handleRegisterChanges} value={props.newUser.pw1} required type='password' name='pw1' placeholder="Pick a strong password" />
+                <input onChange={props.handleRegisterChanges} value={props.newUser.pw2} required type='password' name='pw2' placeholder="Confirm Password" />
                 <button type='submit'>Create Account</button>
             </form>
           </div>
