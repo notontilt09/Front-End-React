@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner'
 
 import { getTrips } from '../actions'
 import TripsList from '../components/TripsList/TripsList'
@@ -15,6 +16,10 @@ class TripsView extends React.Component {
             return (
                 <TripsList trips={this.props.trips}/>
             );
+        } else {
+            return (
+                <Loader type="Puff" color="purple" height={80} width={80} />
+            )
         }
     }
 }
