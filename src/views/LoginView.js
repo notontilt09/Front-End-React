@@ -2,11 +2,20 @@ import React from 'react';
 import Login from '../components/Login/Login';
 import { connect } from 'react-redux'
 
-import { registerUser, handleRegisterChanges } from '../actions'
+import { 
+    registerUser, 
+    handleRegisterChanges,
+    handleLoginChanges,
+    loginUser
+} from '../actions'
 
 class LoginView extends React.Component {
     handleRegisterChanges = e => {
         this.props.handleRegisterChanges(e)
+    }
+
+    handleLoginChanges = e => {
+        this.props.handleLoginChanges(e)
     }
 
     handleRegister = (e, name, username, pw1, pw2) => {
@@ -18,14 +27,23 @@ class LoginView extends React.Component {
         }
     }
 
+    handleLogin = (e, username, password) => {
+        e.preventDefault();
+        console.log(username, password)
+        this.props.loginUser(username, password);
+    }
+
     render() {
         return (
             <Login 
                 history={this.props.history} 
                 isRegistering={this.props.isRegistering}
                 handleRegister={this.handleRegister}
+                handleLogin={this.handleLogin}
                 handleRegisterChanges={this.handleRegisterChanges}
-                newUser={this.props.newUser}    
+                handleLoginChanges={this.handleLoginChanges}
+                newUser={this.props.newUser}
+                user={this.props.user}  
             />
         );
     } 
@@ -33,7 +51,8 @@ class LoginView extends React.Component {
 
 const mapStateToProps = state => ({
     isRegistering: state.isRegistering,
-    newUser: state.newUser
+    newUser: state.newUser,
+    user: state.user
 })
 
-export default connect(mapStateToProps, { registerUser, handleRegisterChanges })(LoginView);
+export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser })(LoginView);
