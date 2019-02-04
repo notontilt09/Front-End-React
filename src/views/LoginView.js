@@ -29,11 +29,11 @@ class LoginView extends React.Component {
 
     handleLogin = (e, username, password) => {
         e.preventDefault();
-        console.log(username, password)
         this.props.loginUser(username, password);
     }
 
     render() {
+
         return (
             <Login 
                 history={this.props.history} 
@@ -52,7 +52,7 @@ class LoginView extends React.Component {
 const mapStateToProps = state => ({
     isRegistering: state.isRegistering,
     newUser: state.newUser,
-    user: state.user
+    user: state.user,
 })
 
 export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser })(LoginView);

@@ -6,7 +6,7 @@ export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
 export const HANDLE_REGISTER_CHANGES = 'HANDLE_REGISTER_CHANGES';
 export const HANDLE_LOGIN_CHANGES = 'HANDLE_LOGIN_CHANGES';
 export const LOGIN_USER_START = 'LOGIN_USER_START'
-export const LOGIN_USER_SUCCCESS = 'LOGIN_USER_SUCCCESS'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
 
 const baseURL = 'https://guidr-api.herokuapp.com'
@@ -29,6 +29,6 @@ export const registerUser = (name, username, password) => dispatch => {
 export const loginUser = (username, password) => dispatch => {
     dispatch( {type: LOGIN_USER_START })
     axios.post(`${baseURL}/auth/login`, {username: username, password: password})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    .then(res => dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: LOGIN_USER_FAIL, payload: err }))
 }
