@@ -2,18 +2,22 @@ import React from 'react';
 import Login from '../components/Login/Login';
 import { connect } from 'react-redux'
 
+
 import { 
     registerUser, 
     handleRegisterChanges,
     handleLoginChanges,
-    loginUser
+    loginUser,
+    logout
 } from '../actions'
 
 class LoginView extends React.Component {
     componentDidMount() {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        this.props.logout()
     }
-    
+
     handleRegisterChanges = e => {
         this.props.handleRegisterChanges(e)
     }
@@ -41,6 +45,7 @@ class LoginView extends React.Component {
             <Login 
                 history={this.props.history} 
                 isRegistering={this.props.isRegistering}
+                isLoggingIn={this.props.isLoggingIn}
                 handleRegister={this.handleRegister}
                 handleLogin={this.handleLogin}
                 handleRegisterChanges={this.handleRegisterChanges}
@@ -54,8 +59,9 @@ class LoginView extends React.Component {
 
 const mapStateToProps = state => ({
     isRegistering: state.isRegistering,
+    isLoggingIn: state.isLoggingIn,
     newUser: state.newUser,
     user: state.user,
 })
 
-export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser })(LoginView);
+export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser, logout })(LoginView);

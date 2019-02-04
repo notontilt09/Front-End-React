@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Loader from 'react-loader-spinner'
+
 import './login.css'
 
 const Login = props => {
@@ -26,6 +28,7 @@ const Login = props => {
                     placeholder="password" 
                 />
                 <button type="submit">Login</button>
+                {props.isLoggingIn && <Loader type="Ball-Triangle" color="purple" height={80} width={80} />}
             </form>
             <form onSubmit={(e) => props.handleRegister(e, props.newUser.name, props.newUser.username, props.newUser.pw1, props.newUser.pw2)} className='register'>
                 <input 
@@ -61,6 +64,7 @@ const Login = props => {
                     placeholder="Confirm Password" 
                 />
                 <button type='submit'>Create Account</button>
+                {props.isRegistering && <Loader type="Ball-Triangle" color="purple" height={80} width={80} />}
             </form>
           </div>
           

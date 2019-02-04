@@ -6,7 +6,11 @@ import {
     HANDLE_LOGIN_CHANGES,
     LOGIN_USER_START,
     LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAIL
+    LOGIN_USER_FAIL,
+    LOGOUT,
+    GET_TRIPS_START,
+    GET_TRIPS_SUCCESS,
+    GET_TRIPS_FAIL
 } from '../actions'
 
 const initialState = {
@@ -23,7 +27,8 @@ const initialState = {
         password: ''
     },
     isLoggedIn: false,
-    guideId: null 
+    fetchingTrips: false,
+    trips: []
 };
 
 const reducer = (state = initialState, action) =>{
@@ -54,7 +59,6 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 isRegistering: false,
                 isLoggedIn: true,
-                guideId: action.payload.user.id
             }
         case REGISTER_USER_FAIL:
             return {
@@ -71,12 +75,43 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 isLoggingIn: false,
                 isLoggedIn: true,
-                guideId: action.payload.user.id
             }
         case LOGIN_USER_FAIL:
             return {
                 ...state,
                 isLoggingIn: false
+            }
+        case LOGOUT:
+            return {
+                ...state,
+                isLoggedIn: false,
+                newUser: {
+                    name: '',
+                    username: '',
+                    pw1: '',
+                    pw2: ''
+                },
+                user: {
+                    username: '',
+                    password: ''
+                }
+            }
+        case GET_TRIPS_START:
+            return {
+                ...state,
+                fetchingTrips: true
+            }
+        case GET_TRIPS_SUCCESS: 
+            return {
+                ...state,
+                trips: action.payload,
+                fetchingTrips: false
+            }
+        case GET_TRIPS_FAIL:
+            return {
+                ...state,
+                fetchingTrips: false
+
             }
         default: 
             return state

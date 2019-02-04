@@ -1,23 +1,26 @@
 import React from 'react';
-import Login from '../components/Login/Login';
 import { connect } from 'react-redux'
 
 import { getTrips } from '../actions'
+import TripsList from '../components/TripsList/TripsList'
 
 class TripsView extends React.Component {
     componentDidMount() {
-        this.props.getTrips(this.props.guideId)
+        const id = localStorage.getItem('userId')
+        this.props.getTrips(id)
     }
 
     render() {
-        return (
-            <h1>Trips</h1>
-        );
+        if (this.props.trips) {
+            return (
+                <TripsList trips={this.props.trips}/>
+            );
+        }
     }
 }
 
 const mapStateToProps = state => ({
-    guideId: state.guideId
+    trips: state.trips
 })
 
 export default connect(mapStateToProps, { getTrips })(TripsView);
