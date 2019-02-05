@@ -2,7 +2,7 @@ import React from 'react'
 
 const Test = props => {
     return (
-        <h1>Test</h1>
+        <h1 onClick={() => props.history.push('/login')}>Test</h1>
     )
 }
 
