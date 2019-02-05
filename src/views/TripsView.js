@@ -2,7 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Loader from 'react-loader-spinner'
 
-import { getTrips, getUser, toggleEditUser, handleEditUserChanges, editUser } from '../actions'
+import { 
+    getTrips, 
+    getUser, 
+    toggleEditUser, 
+    handleEditUserChanges, 
+    editUser,
+    toggleAddingTrip,
+    handleAddTripChanges,
+    addTrip   
+} from '../actions'
 import TripsList from '../components/TripsList/TripsList'
 
 class TripsView extends React.Component {
@@ -21,6 +30,12 @@ class TripsView extends React.Component {
         this.props.editUser(user);
     }
 
+    handleAddTrip = (e, trip) => {
+        e.preventDefault();
+        console.log(trip);
+        this.props.addTrip(trip);
+    }
+
     render() {
         if (this.props.trips) {
             return (
@@ -31,6 +46,11 @@ class TripsView extends React.Component {
                     isEditingUser={this.props.isEditingUser}
                     handleEditUserChanges={this.props.handleEditUserChanges}
                     handleEditUserSubmit={this.handleEditUserSubmit}
+                    toggleAddingTrip={this.props.toggleAddingTrip}
+                    isAddingTrip={this.props.isAddingTrip}
+                    handleAddTripChanges={this.props.handleAddTripChanges}
+                    newTrip={this.props.newTrip}
+                    handleAddTrip={this.handleAddTrip}
                 />
             );
         } else {
@@ -44,7 +64,9 @@ class TripsView extends React.Component {
 const mapStateToProps = state => ({
     trips: state.trips,
     user: state.loggedInUser,
-    isEditingUser: state.isEditingUser
+    isEditingUser: state.isEditingUser,
+    isAddingTrip: state.isAddingTrip,
+    newTrip: state.newTrip
 })
 
-export default connect(mapStateToProps, { getTrips, editUser, getUser, toggleEditUser, handleEditUserChanges })(TripsView);
+export default connect(mapStateToProps, { getTrips, addTrip, handleAddTripChanges, toggleAddingTrip, editUser, getUser, toggleEditUser, handleEditUserChanges })(TripsView);

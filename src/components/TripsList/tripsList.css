@@ -1,7 +1,26 @@
 .trips-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
+    width: 80%;
+    margin: 30px auto;
 }
+
+.trips-list table {
+    width: 100%;
+}
+
+.trips-list table, .trips-list th, .trips-list td {
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+.trips-list table img {
+    width: 100px;
+    height: 80px;
+}
+
 
 .profile {
     margin: 20px auto;
@@ -48,4 +67,25 @@
 
 .edit-user-form label {
     margin: 10px 0 5px 0;
+}
+
+.edit-user-form button {
+    margin-top: 10px;
+}
+
+.add-trip-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-trip-form label {
+    margin: 10px 0 5px 0;
+}
+
+.add-trip-form button {
+    margin: 30px 0 50px 0;
+}
+
+.toggler-btn {
+    margin: 30px 0;
 }

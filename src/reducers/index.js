@@ -18,7 +18,12 @@ import {
     HANDLE_EDIT_USER_CHANGES,
     EDIT_USER_START,
     EDIT_USER_SUCCESS,
-    EDIT_USER_FAIL
+    EDIT_USER_FAIL,
+    TOGGLE_ADDING_TRIP,
+    HANDLE_ADD_TRIP_CHANGES,
+    ADD_TRIP_START,
+    ADD_TRIP_SUCCESS,
+    ADD_TRIP_FAIL
 } from '../actions'
 
 const emptyNewUser = {
@@ -30,6 +35,15 @@ const emptyNewUser = {
     title: '',
     careerLength: '',
     tagline: ''
+}
+
+const emptyNewTrip = {
+    title: '',
+    description: '',
+    designation: 'Private',
+    type: '',
+    duration: '',
+    img_url: ''
 }
 
 const initialState = {
@@ -44,7 +58,9 @@ const initialState = {
     fetchingTrips: false,
     trips: [],
     loggedInUser: {},
-    isEditingUser: false
+    isEditingUser: false,
+    isAddingTrip: false,
+    newTrip: emptyNewTrip
 };
 
 const reducer = (state = initialState, action) =>{
@@ -70,6 +86,14 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 loggedInUser: {
                     ...state.loggedInUser,
+                    [action.payload.target.name]: action.payload.target.value
+                }
+            }
+        case HANDLE_ADD_TRIP_CHANGES:
+            return {
+                ...state,
+                newTrip: {
+                    ...state.newTrip,
                     [action.payload.target.name]: action.payload.target.value
                 }
             }
@@ -147,6 +171,18 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 loggedInUser: action.payload,
                 isEditingUser: false
+            }
+        case TOGGLE_ADDING_TRIP:
+            return {
+                ...state,
+                isAddingTrip: !state.isAddingTrip
+            }
+        case ADD_TRIP_SUCCESS:
+            return {
+                ...state,
+                trips: action.payload,
+                isAddingTrip: false,
+                newTrip: emptyNewTrip
             }
         default: 
             return state

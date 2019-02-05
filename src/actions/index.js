@@ -20,6 +20,11 @@ export const HANDLE_EDIT_USER_CHANGES = 'HANDLE_EDIT_USER_CHANGES';
 export const EDIT_USER_START = 'EDIT_USER_START';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
+export const TOGGLE_ADDING_TRIP ='TOGGLE_ADDING_TRIP';
+export const HANDLE_ADD_TRIP_CHANGES = 'HANDLE_ADD_TRIP_CHANGES';
+export const ADD_TRIP_START = 'ADD_TRIP_START';
+export const ADD_TRIP_SUCCESS = 'ADD_TRIP_SUCCESS';
+export const ADD_TRIP_FAIL = 'ADD_TRIP_FAIL';
 
 
 const baseURL = 'https://guidr-api.herokuapp.com'
@@ -34,6 +39,10 @@ export const handleLoginChanges = e => {
 
 export const handleEditUserChanges = e => {
     return { type: HANDLE_EDIT_USER_CHANGES, payload: e }
+}
+
+export const handleAddTripChanges = e => {
+    return { type: HANDLE_ADD_TRIP_CHANGES, payload: e }
 }
 
 export const registerUser = newUser => dispatch => {
@@ -115,4 +124,28 @@ export const editUser = user => dispatch => {
             axios.get(`${baseURL}/user/guides/${user.id}`, options)
             .then(res => dispatch({ type: EDIT_USER_SUCCESS, payload: res.data}))
         })
+}
+
+export const toggleAddingTrip = () => {
+    return (
+        {type: TOGGLE_ADDING_TRIP}
+    )
+}
+
+export const addTrip = trip => dispatch => {
+    const token = localStorage.getItem('token');
+    const id = localStorage.getItem('userId')
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({ type: ADD_TRIP_START })
+    axios.post(`${baseURL}/user/trips/${id}/create`, trip, options)
+        .then(res => {
+            console.log(res)
+            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+                .then(res => dispatch({ type: ADD_TRIP_SUCCESS, payload: res.data }))
+        })
+        .catch(err => console.log(err))
 }
