@@ -9,7 +9,9 @@ const Trip = props => {
        <div className='trip'>
          <h3>{props.trip.title}</h3>
          <h4>{props.trip.description}</h4>
-         <img src={props.trip.src} alt={props.trip.title} />
+         <div className="trip-image">
+            <img src={props.trip.img_url} alt={props.trip.title} />
+         </div>
        </div>
     );
 }

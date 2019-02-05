@@ -30,7 +30,7 @@ const Login = props => {
                 <button type="submit">Login</button>
                 {props.isLoggingIn && <Loader type="Puff" color="purple" height={40} width={40} />}
             </form>
-            <form onSubmit={(e) => props.handleRegister(e, props.newUser.name, props.newUser.username, props.newUser.pw1, props.newUser.pw2)} className='register'>
+            <form onSubmit={(e) => props.handleRegister(e, props.newUser)} className='register'>
                 <input 
                     onChange={props.handleRegisterChanges} 
                     value={props.newUser.name} 
@@ -52,7 +52,7 @@ const Login = props => {
                     value={props.newUser.pw1} 
                     required 
                     type='password'
-                    name='pw1' 
+                    name='password' 
                     placeholder="Pick a strong password" 
                 />
                 <input 
@@ -63,6 +63,38 @@ const Login = props => {
                     name='pw2' 
                     placeholder="Confirm Password" 
                 />
+                <input 
+                    onChange={props.handleRegisterChanges} 
+                    value={props.newUser.age} 
+                    required 
+                    type='number' 
+                    name='age' 
+                    placeholder="Age" 
+                />
+                <input 
+                    onChange={props.handleRegisterChanges} 
+                    value={props.newUser.title} 
+                    required 
+                    type='text' 
+                    name='title' 
+                    placeholder="Job Title" 
+                />
+                <input 
+                    onChange={props.handleRegisterChanges} 
+                    value={props.newUser.careerLength} 
+                    required 
+                    type='number' 
+                    name='careerLength' 
+                    placeholder="Career Length" 
+                />
+                <textarea 
+                    onChange={props.handleRegisterChanges} 
+                    value={props.newUser.tagline} 
+                    required 
+                    name='tagline' 
+                    placeholder="Short tagline describing yourself" 
+                />
+                
                 <button type='submit'>Create Account</button>
                 {props.isRegistering && <Loader type="Puff" color="purple" height={40} width={40} />}
             </form>

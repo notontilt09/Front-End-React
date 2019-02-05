@@ -26,10 +26,16 @@ class LoginView extends React.Component {
         this.props.handleLoginChanges(e)
     }
 
-    handleRegister = (e, name, username, pw1, pw2) => {
+    handleRegister = (e, newUser) => {
         e.preventDefault();
-        if (pw1 === pw2) {
-            this.props.registerUser(name, username, pw1)
+        if (newUser.password === newUser.pw2) {
+            let regUser = {
+                ...newUser, 
+                age: parseInt(newUser.age)
+            };
+            delete regUser.pw2;
+            console.log(regUser);
+            this.props.registerUser(regUser)
         } else {
             alert('Passwords do not match!')
         }

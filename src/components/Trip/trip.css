@@ -15,3 +15,13 @@
     font-style: italic;
     margin-bottom: 20px;
 }
+
+.trip-image {
+    width: 100px;
+    height: 100px;
+}
+
+.trip-image img {
+    width: 100%;
+    height: auto;
+}

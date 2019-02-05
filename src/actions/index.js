@@ -12,7 +12,9 @@ export const GET_TRIPS_START = 'GET_TRIPS_START';
 export const GET_TRIPS_SUCCESS = 'GET_TRIPS_SUCCESS';
 export const GET_TRIPS_FAIL = 'GET_TRIPS_FAIL';
 export const LOGOUT = 'LOGOUT';
-
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAIL = 'GET_USER_FAIL';
 
 const baseURL = 'https://guidr-api.herokuapp.com'
 
@@ -24,12 +26,13 @@ export const handleLoginChanges = e => {
     return { type: HANDLE_LOGIN_CHANGES, payload: e }
 }
 
-export const registerUser = (name, username, password) => dispatch => {
+export const registerUser = newUser => dispatch => {
     dispatch({ type: REGISTER_USER_START})
-    axios.post(`${baseURL}/auth/register`, {name: name, username: username, password: password})
+    axios.post(`${baseURL}/auth/register`, newUser)
     .then(res => {
+        console.log(res);
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('userId', res.data.user.id);
+        localStorage.setItem('userId', res.data.id);
         dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data})
     })
     .catch(err => dispatch({ type: REGISTER_USER_FAIL, payload: err}))
@@ -40,7 +43,7 @@ export const loginUser = (username, password) => dispatch => {
     axios.post(`${baseURL}/auth/login`, {username: username, password: password})
     .then(res => {
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('userId', res.data.user.id);
+        localStorage.setItem('userId', res.data.id);
         dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
         
     })
@@ -64,4 +67,17 @@ export const logout = () => {
     return {
         type: LOGOUT
     }
+}
+
+export const getUser = id => dispatch => {
+    const token = localStorage.getItem('token');
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({ type: GET_USER_START })
+    axios.get(`${baseURL}/user/guides/${id}`, options)
+        .then(res => dispatch({ type: GET_USER_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({ type: GET_USER_FAIL, payload: err}))
 }

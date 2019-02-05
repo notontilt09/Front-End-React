@@ -10,25 +10,35 @@ import {
     LOGOUT,
     GET_TRIPS_START,
     GET_TRIPS_SUCCESS,
-    GET_TRIPS_FAIL
+    GET_TRIPS_FAIL,
+    GET_USER_START,
+    GET_USER_SUCCESS,
+    GET_USER_FAIL
 } from '../actions'
+
+const emptyNewUser = {
+    name: '',
+    username: '',
+    password: '',
+    pw2: '',
+    age: '',
+    title: '',
+    careerLength: '',
+    tagline: ''
+}
 
 const initialState = {
     isRegistering: false,
     isLoggingIn: false,
-    newUser: {
-        name: '',
-        username: '',
-        pw1: '',
-        pw2: ''
-    },
+    newUser: emptyNewUser,
     user: {
         username: '',
         password: ''
     },
     isLoggedIn: false,
     fetchingTrips: false,
-    trips: []
+    trips: [],
+    loggedInUser: {}
 };
 
 const reducer = (state = initialState, action) =>{
@@ -85,12 +95,7 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 isLoggedIn: false,
-                newUser: {
-                    name: '',
-                    username: '',
-                    pw1: '',
-                    pw2: ''
-                },
+                newUser: emptyNewUser,
                 user: {
                     username: '',
                     password: ''
@@ -112,6 +117,11 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 fetchingTrips: false
 
+            }
+        case GET_USER_SUCCESS:
+            return {
+                ...state,
+                loggedInUser: action.payload
             }
         default: 
             return state
