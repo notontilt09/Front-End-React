@@ -28,7 +28,7 @@ const Login = props => {
                     placeholder="password" 
                 />
                 <button type="submit">Login</button>
-                {props.isLoggingIn && <Loader type="Puff" color="purple" margin-top={20} height={40} width={40} />}
+                {props.isLoggingIn && <Loader type="Puff" color="purple" height={40} width={40} />}
             </form>
             <form onSubmit={(e) => props.handleRegister(e, props.newUser.name, props.newUser.username, props.newUser.pw1, props.newUser.pw2)} className='register'>
                 <input 
@@ -64,7 +64,7 @@ const Login = props => {
                     placeholder="Confirm Password" 
                 />
                 <button type='submit'>Create Account</button>
-                {props.isRegistering && <Loader type="Puff" color="purple" height={80} width={80} />}
+                {props.isRegistering && <Loader type="Puff" color="purple" height={40} width={40} />}
             </form>
           </div>
           

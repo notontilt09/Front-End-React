@@ -1,0 +1,10 @@
+.trips-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.trips-title {
+    display: block;
+    margin: 40px 0;
+    font-size: 40px;
+}

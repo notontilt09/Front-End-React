@@ -1,0 +1,17 @@
+.trip {
+    border: 1px solid black;
+    width: 40%; 
+    margin: 20px auto;
+}
+
+.trip h3 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.trip h4 {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
