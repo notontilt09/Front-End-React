@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 import LoginView from './views/LoginView'
 import TripsView from './views/TripsView'
+import Test from './views/Test'
 
 import './App.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route exact path='/' component={Test} />
         <Route path='/login' component={LoginView} />
         <Route path='/trips' component={TripsView} />
       </div>
