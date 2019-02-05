@@ -79,7 +79,6 @@ export const getTrips = id => dispatch => {
     dispatch({ type: GET_TRIPS_START})
     axios.get(`${baseURL}/user/trips/${id}/all`, options)
         .then(res => {
-            console.log(res);
             dispatch({ type: GET_TRIPS_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_TRIPS_FAIL, payload: err}))

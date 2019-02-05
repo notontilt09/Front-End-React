@@ -175,7 +175,8 @@ const reducer = (state = initialState, action) =>{
         case TOGGLE_ADDING_TRIP:
             return {
                 ...state,
-                isAddingTrip: !state.isAddingTrip
+                isAddingTrip: !state.isAddingTrip,
+                newTrip: emptyNewTrip
             }
         case ADD_TRIP_SUCCESS:
             return {
