@@ -15,7 +15,7 @@ class TripsView extends React.Component {
     render() {
         if (this.props.trips) {
             return (
-                <TripsList trips={this.props.trips}/>
+                <TripsList user={this.props.user} trips={this.props.trips}/>
             );
         } else {
             return (
@@ -26,7 +26,8 @@ class TripsView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    trips: state.trips
+    trips: state.trips,
+    user: state.loggedInUser
 })
 
 export default connect(mapStateToProps, { getTrips, getUser })(TripsView);

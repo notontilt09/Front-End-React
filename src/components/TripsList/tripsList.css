@@ -3,8 +3,28 @@
     flex-wrap: wrap;
 }
 
+.profile {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.profile h2 {
+    margin: 20px 0;
+}
+
+.profile h3 {
+    margin: 20px 0;
+}
+
+.profile h4 {
+    margin: 20px 0;
+}
+
+.profile p {
+    font-style: italic
+}
+
 .trips-title {
     display: block;
-    margin: 40px 0;
     font-size: 40px;
 }

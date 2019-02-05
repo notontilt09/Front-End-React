@@ -7,7 +7,13 @@ import './tripsList.css'
 const TripsList = props => {
     return (
         <>
-            <h2 className='trips-title'>Your Trips</h2>
+            <div className='profile'>
+                <h2 className='trips-title'>{props.user.name}</h2>
+                <h3>{props.user.title}</h3>
+                <h4>Age: {props.user.age}</h4>
+                <h4>Career Length: {props.user.careerLength}</h4>
+                <p>{props.user.tagline}</p>
+            </div>
             <div className='trips-list'>
                 {props.trips.map(trip => 
                     <Trip key={trip.id} trip={trip} />
