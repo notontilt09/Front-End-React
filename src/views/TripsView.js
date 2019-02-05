@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Loader from 'react-loader-spinner'
 
-import { getTrips, getUser } from '../actions'
+import { getTrips, getUser, toggleEditUser, handleEditUserChanges, editUser } from '../actions'
 import TripsList from '../components/TripsList/TripsList'
 
 class TripsView extends React.Component {
@@ -12,10 +12,26 @@ class TripsView extends React.Component {
         this.props.getTrips(id);
     }
 
+    toggleEditUser = () => {
+        this.props.toggleEditUser();
+    }
+
+    handleEditUserSubmit = (e, user) => {
+        e.preventDefault();
+        this.props.editUser(user);
+    }
+
     render() {
         if (this.props.trips) {
             return (
-                <TripsList user={this.props.user} trips={this.props.trips}/>
+                <TripsList 
+                    toggleEditUser={this.toggleEditUser} 
+                    user={this.props.user} 
+                    trips={this.props.trips}
+                    isEditingUser={this.props.isEditingUser}
+                    handleEditUserChanges={this.props.handleEditUserChanges}
+                    handleEditUserSubmit={this.handleEditUserSubmit}
+                />
             );
         } else {
             return (
@@ -27,7 +43,8 @@ class TripsView extends React.Component {
 
 const mapStateToProps = state => ({
     trips: state.trips,
-    user: state.loggedInUser
+    user: state.loggedInUser,
+    isEditingUser: state.isEditingUser
 })
 
-export default connect(mapStateToProps, { getTrips, getUser })(TripsView);
+export default connect(mapStateToProps, { getTrips, editUser, getUser, toggleEditUser, handleEditUserChanges })(TripsView);

@@ -13,7 +13,12 @@ import {
     GET_TRIPS_FAIL,
     GET_USER_START,
     GET_USER_SUCCESS,
-    GET_USER_FAIL
+    GET_USER_FAIL,
+    TOGGLE_EDIT_USER,
+    HANDLE_EDIT_USER_CHANGES,
+    EDIT_USER_START,
+    EDIT_USER_SUCCESS,
+    EDIT_USER_FAIL
 } from '../actions'
 
 const emptyNewUser = {
@@ -38,7 +43,8 @@ const initialState = {
     isLoggedIn: false,
     fetchingTrips: false,
     trips: [],
-    loggedInUser: {}
+    loggedInUser: {},
+    isEditingUser: false
 };
 
 const reducer = (state = initialState, action) =>{
@@ -56,6 +62,14 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 user: {
                     ...state.user,
+                    [action.payload.target.name]: action.payload.target.value
+                }
+            }
+        case HANDLE_EDIT_USER_CHANGES:
+            return {
+                ...state,
+                loggedInUser: {
+                    ...state.loggedInUser,
                     [action.payload.target.name]: action.payload.target.value
                 }
             }
@@ -122,6 +136,17 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 loggedInUser: action.payload
+            }
+        case TOGGLE_EDIT_USER:
+            return {
+                ...state,
+                isEditingUser: true
+            }
+        case EDIT_USER_SUCCESS:
+            return {
+                ...state,
+                loggedInUser: action.payload,
+                isEditingUser: false
             }
         default: 
             return state

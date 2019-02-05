@@ -15,6 +15,12 @@ export const LOGOUT = 'LOGOUT';
 export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAIL = 'GET_USER_FAIL';
+export const TOGGLE_EDIT_USER = 'TOGGLE_EDIT_USER';
+export const HANDLE_EDIT_USER_CHANGES = 'HANDLE_EDIT_USER_CHANGES';
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
+
 
 const baseURL = 'https://guidr-api.herokuapp.com'
 
@@ -24,6 +30,10 @@ export const handleRegisterChanges = e => {
 
 export const handleLoginChanges = e => {
     return { type: HANDLE_LOGIN_CHANGES, payload: e }
+}
+
+export const handleEditUserChanges = e => {
+    return { type: HANDLE_EDIT_USER_CHANGES, payload: e }
 }
 
 export const registerUser = newUser => dispatch => {
@@ -59,7 +69,10 @@ export const getTrips = id => dispatch => {
     }
     dispatch({ type: GET_TRIPS_START})
     axios.get(`${baseURL}/user/trips/${id}/all`, options)
-        .then(res => dispatch({ type: GET_TRIPS_SUCCESS, payload: res.data }))
+        .then(res => {
+            console.log(res);
+            dispatch({ type: GET_TRIPS_SUCCESS, payload: res.data })
+        })
         .catch(err => dispatch({ type: GET_TRIPS_FAIL, payload: err}))
 }
 
@@ -80,4 +93,26 @@ export const getUser = id => dispatch => {
     axios.get(`${baseURL}/user/guides/${id}`, options)
         .then(res => dispatch({ type: GET_USER_SUCCESS, payload: res.data}))
         .catch(err => dispatch({ type: GET_USER_FAIL, payload: err}))
+}
+
+export const toggleEditUser = () => {
+    return (
+        {type: TOGGLE_EDIT_USER}
+    )
+}
+
+export const editUser = user => dispatch => {
+    const token = localStorage.getItem('token');
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({ type: EDIT_USER_START })
+    axios.put(`${baseURL}/user/guides/update/${user.id}`, user, options)
+        .then(res => {
+            console.log(res);
+            axios.get(`${baseURL}/user/guides/${user.id}`, options)
+            .then(res => dispatch({ type: EDIT_USER_SUCCESS, payload: res.data}))
+        })
 }
