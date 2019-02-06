@@ -48,6 +48,7 @@ class Trip extends React.Component {
             >
                <label htmlFor='title'>Title</label>
                <input 
+                  required
                   type='text' 
                   name='title' 
                   onChange={this.handleChanges} 
@@ -55,6 +56,7 @@ class Trip extends React.Component {
                />
                <label htmlFor='description'>Description</label>
                <input 
+                  required
                   type='text' 
                   name='description' 
                   onChange={this.handleChanges} 
@@ -62,6 +64,7 @@ class Trip extends React.Component {
                />
                <label htmlFor='img_url'>Image URL</label>
                <input 
+                  required
                   type='text' 
                   name='img_url' 
                   onChange={this.handleChanges} 

@@ -5,6 +5,7 @@ const AddTripForm = props => {
         <form className="add-trip-form" onSubmit={(e) => props.handleAddTrip(e, props.newTrip)}>
             <label htmlFor='title'>Title</label>
                 <input 
+                    required
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.title}
                     type='text' 
@@ -12,6 +13,7 @@ const AddTripForm = props => {
                 />
             <label htmlFor='description'>Location</label>
                 <input 
+                    required
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.description}
                     type='text' 
@@ -27,6 +29,7 @@ const AddTripForm = props => {
                 </select>
             <label htmlFor='type'>Type of Trip</label>
                 <input 
+                    required
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.type}
                     type='text' 
@@ -34,6 +37,7 @@ const AddTripForm = props => {
                 />
             <label htmlFor='duration'>Trip Length in Days</label>
                 <input 
+                    required
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.duration}
                     type='number' 
@@ -41,6 +45,7 @@ const AddTripForm = props => {
                 />
             <label htmlFor='img_url'>Image URL</label>
                 <input 
+                    required
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.img_url}
                     type='text' 
