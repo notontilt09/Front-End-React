@@ -52,8 +52,10 @@ class SingleTripView extends React.Component {
     deleteTrip = (e, trip) => {
         e.preventDefault();
         console.log(trip);
-        this.props.history.push('/trips');
-        this.props.deleteTrip(trip);
+        if (window.confirm('Are you sure you want to delete this trip?')) {
+            this.props.deleteTrip(trip);
+            this.props.history.push('/trips');
+        }
     }
 
     handleEditTripSubmit = (e, trip) => {

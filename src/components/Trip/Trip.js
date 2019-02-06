@@ -31,14 +31,16 @@ class Trip extends React.Component {
       if (!this.props.isEditingTrip) {
          return (
             <div className='trip'>
-            <h3>{this.props.trip.title}</h3>
-            <h4>{this.props.trip.description}</h4>
-            <div className="trip-image">
-               <img src={this.props.trip.img_url} alt={this.props.trip.title} />
-            </div>
-            <button onClick={(e) => this.props.deleteTrip(e, this.props.trip)}>Delete Trip</button>
-            <button onClick={this.props.toggleEditTrip}>Edit Trip</button>
-            <button onClick={this.props.routeToTrips}>Back To Trips</button>
+               <h3>{this.props.trip.title}</h3>
+               <h4>{this.props.trip.description}</h4>
+               <div className="trip-image">
+                  <img src={this.props.trip.img_url} alt={this.props.trip.title} />
+               </div>
+               <div className='edit-trip-btns'>
+                  <button onClick={(e) => this.props.deleteTrip(e, this.props.trip)}>Delete Trip</button>
+                  <button onClick={this.props.toggleEditTrip}>Edit Trip</button>
+                  <button onClick={this.props.routeToTrips}>Back To Trips</button>
+               </div>
             </div>
          );
       } else {
