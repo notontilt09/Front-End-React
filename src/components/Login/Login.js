@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Loader from 'react-loader-spinner'
+import logo from '../../images/logo.png'
 
 import './login.css'
 
@@ -8,7 +9,7 @@ const Login = props => {
     return (
         <div className='login'>
             <div className='login-header'>
-                <h1>Guidr</h1>
+                <img src={logo} alt="main-logo"/>
                 <h3>Welcome! Please login or register below.</h3>
             </div>
             <div className='login-forms'>

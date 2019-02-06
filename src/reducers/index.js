@@ -68,7 +68,7 @@ const initialState = {
     isEditingUser: false,
     isAddingTrip: false,
     newTrip: emptyNewTrip,
-    isEditingTrip: false
+    isEditingTrip: false,
 };
 
 const reducer = (state = initialState, action) =>{
