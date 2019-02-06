@@ -35,12 +35,7 @@ class TripsView extends React.Component {
 
     handleAddTrip = (e, trip) => {
         e.preventDefault();
-        console.log(trip);
         this.props.addTrip(trip);
-    }
-
-    routeToTrip = () => {
-
     }
 
     render() {

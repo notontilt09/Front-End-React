@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getTrips, getUser, toggleEditUser, handleEditUserChanges, editUser } from '../actions'
+import { getTrips, toggleEditTrip, editTrip, deleteTrip, getUser, toggleEditUser, handleEditUserChanges, editUser } from '../actions'
 import Trip from '../components/Trip/Trip'
 import Profile from '../components/Profile/Profile'
 
@@ -48,6 +48,17 @@ class SingleTripView extends React.Component {
         e.preventDefault();
         this.props.editUser(user);
     }
+
+    deleteTrip = (e, trip) => {
+        e.preventDefault();
+        console.log(trip);
+        this.props.deleteTrip(trip)
+    }
+
+    handleEditTripSubmit = (e, trip) => {
+        e.preventDefault();
+        this.props.editTrip(trip);
+    }
     
     render() {
         if (!localStorage.getItem('token')) {
@@ -66,8 +77,15 @@ class SingleTripView extends React.Component {
                     toggleEditUser={this.props.toggleEditUser}
                     handleEditUserChanges={this.props.handleEditUserChanges}
                     handleEditUserSubmit={this.handleEditUserSubmit}
+                    
                 />
-                <Trip trip={this.state.trip} />
+                <Trip 
+                    handleEditTripSubmit={this.handleEditTripSubmit} 
+                    deleteTrip={this.deleteTrip} 
+                    trip={this.state.trip}
+                    isEditingTrip={this.props.isEditingTrip}
+                    toggleEditTrip={this.props.toggleEditTrip}
+                />
             </>
         )
     }
@@ -77,6 +95,7 @@ const mapStateToProps = state => ({
     trips: state.trips,
     user: state.loggedInUser,
     isEditingUser: state.isEditingUser,
+    isEditingTrip: state.isEditingTrip
 })
 
-export default connect(mapStateToProps, { getUser, getTrips, toggleEditUser, handleEditUserChanges, editUser })(SingleTripView)
+export default connect(mapStateToProps, { getUser, toggleEditTrip, editTrip, deleteTrip, getTrips, toggleEditUser, handleEditUserChanges, editUser })(SingleTripView)

@@ -25,6 +25,13 @@ export const HANDLE_ADD_TRIP_CHANGES = 'HANDLE_ADD_TRIP_CHANGES';
 export const ADD_TRIP_START = 'ADD_TRIP_START';
 export const ADD_TRIP_SUCCESS = 'ADD_TRIP_SUCCESS';
 export const ADD_TRIP_FAIL = 'ADD_TRIP_FAIL';
+export const DELETE_TRIP_START = 'DELETE_TRIP_START';
+export const DELETE_TRIP_SUCCESS = 'DELETE_TRIP_SUCCESS';
+export const DELETE_TRIP_FAIL = 'DELETE_TRIP_FAIL';
+export const EDIT_TRIP_START = 'EDIT_TRIP_START';
+export const EDIT_TRIP_SUCCESS = 'EDIT_TRIP_SUCCESS';
+export const EDIT_TRIP_FAIL = 'EDIT_TRIP_FAIL';
+export const TOGGLE_EDIT_TRIP = 'TOGGLE_EDIT_TRIP';
 
 
 const baseURL = 'https://guidr-api.herokuapp.com'
@@ -109,6 +116,12 @@ export const toggleEditUser = () => {
     )
 }
 
+export const toggleEditTrip = () => {
+    return (
+        {type: TOGGLE_EDIT_TRIP}
+    )
+}
+
 export const editUser = user => dispatch => {
     const token = localStorage.getItem('token');
     const options = {
@@ -146,5 +159,32 @@ export const addTrip = trip => dispatch => {
             axios.get(`${baseURL}/user/trips/${id}/all`, options)
                 .then(res => dispatch({ type: ADD_TRIP_SUCCESS, payload: res.data }))
         })
+        .catch(err => console.log(err))
+}
+
+export const deleteTrip = trip => dispatch => {
+    const token = localStorage.getItem('token');
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({ type: DELETE_TRIP_START })
+    axios.delete(`${baseURL}/user/trips/${trip.id}`, trip, options)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+}
+
+export const editTrip = trip => dispatch => {
+    const token = localStorage.getItem('token');
+    const id = localStorage.getItem('userId')
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({ type: EDIT_TRIP_START })
+    axios.put(`${baseURL}/user/trips/${id}/${trip.id}`, trip, options)
+        .then(res => console.log(res))
         .catch(err => console.log(err))
 }

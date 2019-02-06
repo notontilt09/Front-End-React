@@ -23,7 +23,14 @@ import {
     HANDLE_ADD_TRIP_CHANGES,
     ADD_TRIP_START,
     ADD_TRIP_SUCCESS,
-    ADD_TRIP_FAIL
+    ADD_TRIP_FAIL,
+    DELETE_TRIP_START,
+    DELETE_TRIP_SUCCESS,
+    DELETE_TRIP_FAIL,
+    EDIT_TRIP_START,
+    EDIT_TRIP_SUCCESS,
+    EDIT_TRIP_FAIL,
+    TOGGLE_EDIT_TRIP
 } from '../actions'
 
 const emptyNewUser = {
@@ -60,7 +67,8 @@ const initialState = {
     loggedInUser: {},
     isEditingUser: false,
     isAddingTrip: false,
-    newTrip: emptyNewTrip
+    newTrip: emptyNewTrip,
+    isEditingTrip: false
 };
 
 const reducer = (state = initialState, action) =>{
@@ -184,6 +192,11 @@ const reducer = (state = initialState, action) =>{
                 trips: action.payload,
                 isAddingTrip: false,
                 newTrip: emptyNewTrip
+            }
+        case TOGGLE_EDIT_TRIP:
+            return {
+                ...state,
+                isEditingTrip: !state.isEditingTrip
             }
         default: 
             return state
