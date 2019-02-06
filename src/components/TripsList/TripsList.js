@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Trip from '../Trip/Trip'
 import Profile from '../Profile/Profile'
 import AddTripForm from './AddTripForm'
 
@@ -39,7 +38,7 @@ const TripsList = props => {
                             <th>Trip Details</th>
                         </tr>
                         {props.trips.map(trip => 
-                                <tr onClick={() => console.log('here')} key={trip.id}>
+                                <tr key={trip.id}>
                                     <td><h5>{trip.title}</h5></td>
                                     <td><h5>{trip.description}</h5></td>
                                     <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
