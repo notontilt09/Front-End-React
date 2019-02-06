@@ -21,8 +21,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.isLoggedIn && 
-          <Link to='/login'><button>Logout</button></Link>
+        {localStorage.getItem('token') &&
+          <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link>
         }
         <Route exact path='/' component={Test} />
         <Route exact path='/login' component={LoginView} />

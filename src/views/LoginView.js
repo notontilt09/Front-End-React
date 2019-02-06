@@ -13,9 +13,7 @@ import {
 
 class LoginView extends React.Component {
     componentDidMount() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        console.log('mounted login')
+        this.props.logout();
     }
 
     handleRegisterChanges = e => {
