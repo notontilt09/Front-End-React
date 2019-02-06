@@ -30,7 +30,7 @@ const TripsList = props => {
                         handleAddTrip={props.handleAddTrip}    
                     />
                 }
-                {props.trips.length &&
+                {props.trips.length > 0 &&
                     <table>
                         <tbody>
                             <tr>
@@ -53,7 +53,7 @@ const TripsList = props => {
                     </table>
                 }
                 {!props.trips.length &&
-                    <h2>Add Some Trips</h2>
+                    <h2>There are no trips for this user.  Try adding some!</h2>
                 }
              </div>
         </>
