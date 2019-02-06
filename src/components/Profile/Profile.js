@@ -1,6 +1,7 @@
 import React from 'react'
 
-import '../TripsList/tripsList.css'
+// import '../TripsList/tripsList.css'
+import './profile.css'
 
 const Profile = props => {
     return (

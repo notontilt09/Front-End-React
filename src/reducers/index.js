@@ -157,7 +157,8 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 trips: action.payload,
-                fetchingTrips: false
+                fetchingTrips: false,
+                isEditingTrip: false
             }
         case GET_TRIPS_FAIL:
             return {
@@ -168,7 +169,8 @@ const reducer = (state = initialState, action) =>{
         case GET_USER_SUCCESS:
             return {
                 ...state,
-                loggedInUser: action.payload
+                loggedInUser: action.payload,
+                isEditingUser: false
             }
         case TOGGLE_EDIT_USER:
             return {

@@ -1,0 +1,49 @@
+.profile {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.profile h3 {
+    margin: 20px 0;
+}
+
+.profile h4 {
+    margin: 20px 0;
+}
+
+.profile p {
+    font-style: italic
+}
+
+
+.profile-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.profile-header h4 {
+    margin-right: 5px;
+    font-style: italic;
+}
+
+.profile-header button {
+    margin-left: 20px;
+}
+
+.edit-user-form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 20px auto;
+}
+
+.edit-user-btns {
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.edit-user-form label {
+    margin: 10px 0 5px 0;
+}
