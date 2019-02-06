@@ -175,7 +175,11 @@ export const deleteTrip = trip => dispatch => {
         .then(res => {
             console.log(res);
             axios.get(`${baseURL}/user/trips/${id}/all`, options)
-                .then(res => dispatch({ type: DELETE_TRIP_SUCCESS, payload: res.data }))
+                .then(res => {
+                    console.log(res);
+                    dispatch({ type: DELETE_TRIP_SUCCESS, payload: res.data })
+                })
+                .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
 }

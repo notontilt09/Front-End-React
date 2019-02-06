@@ -18,13 +18,6 @@ class App extends Component {
     }
   }
 
-  // routeToLogin = e => {
-  //   console.log('here');
-  //   this.props.history.push('/login');
-
-  // }
-
-
   render() {
     return (
       <div className="App">
@@ -32,7 +25,7 @@ class App extends Component {
           <Link to='/login'><button>Logout</button></Link>
         }
         <Route exact path='/' component={Test} />
-        <Route path='/login' component={LoginView} />
+        <Route exact path='/login' component={LoginView} />
         <Route exact path='/trips' component={TripsView} />
         <Route path='/trips/:id' component={SingleTripView} />
       </div>
