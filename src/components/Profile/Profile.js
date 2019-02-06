@@ -57,7 +57,7 @@ const Profile = props => {
                         name='tagline' 
                         value={props.user.tagline} 
                     />
-                    <div className='edit-user-btns'>
+                    <div className='edit-user-btn'>
                         <button type="submit">Save Changes</button>
                     </div>
                 </form>
