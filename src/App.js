@@ -25,7 +25,10 @@ class App extends Component {
         {/* {localStorage.getItem('token') &&
           <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link>
         } */}
-        <Header logout={this.props.logout}/>
+        {localStorage.getItem('token') &&
+          <Header logout={this.props.logout}/>
+        }
+        
         <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={LoginView} />
         <Route exact path='/trips' component={TripsView} />
