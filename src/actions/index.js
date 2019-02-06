@@ -164,20 +164,25 @@ export const addTrip = trip => dispatch => {
 
 export const deleteTrip = trip => dispatch => {
     const token = localStorage.getItem('token');
+    const id = localStorage.getItem('userId');
     const options = {
         headers: {
             Authorization: token,
         },
     }
     dispatch({ type: DELETE_TRIP_START })
-    axios.delete(`${baseURL}/user/trips/${trip.id}`, trip, options)
-        .then(res => console.log(res))
+    axios.delete(`${baseURL}/user/trips/${trip.id}`, options)
+        .then(res => {
+            console.log(res);
+            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+                .then(res => dispatch({ type: DELETE_TRIP_SUCCESS, payload: res.data }))
+        })
         .catch(err => console.log(err))
 }
 
 export const editTrip = trip => dispatch => {
     const token = localStorage.getItem('token');
-    const id = localStorage.getItem('userId')
+    const id = localStorage.getItem('userId');
     const options = {
         headers: {
             Authorization: token,
