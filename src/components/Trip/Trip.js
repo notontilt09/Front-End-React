@@ -73,6 +73,15 @@ class Trip extends React.Component {
                   onChange={this.handleChanges} 
                   value={this.state.trip.img_url} 
                />
+               <label htmlFor='designation'>Designation</label>
+               <select
+                  name='designation'
+                  onChange={this.handleChanges}
+                  value={this.state.trip.designation}
+               >
+                  <option>Private</option>
+                  <option>Professional</option>
+               </select>
                <div className='edit-trip-btn-container'>
                   <button type='submit'>Save Changes</button>
                   <button onClick={this.props.toggleEditTrip}>Cancel</button>
