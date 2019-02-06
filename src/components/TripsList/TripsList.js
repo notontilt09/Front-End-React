@@ -33,7 +33,7 @@ const TripsList = props => {
                     <tbody>
                         <tr>
                             <th>Trip Title</th>
-                            <th>Trip Location</th>
+                            <th>Trip Description</th>
                             <th>Trip Thumbnail</th>
                             <th>Trip Details</th>
                         </tr>
