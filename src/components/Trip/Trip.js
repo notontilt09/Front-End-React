@@ -38,6 +38,7 @@ class Trip extends React.Component {
             </div>
             <button onClick={(e) => this.props.deleteTrip(e, this.props.trip)}>Delete Trip</button>
             <button onClick={this.props.toggleEditTrip}>Edit Trip</button>
+            <button onClick={this.props.routeToTrips}>Back To Trips</button>
             </div>
          );
       } else {

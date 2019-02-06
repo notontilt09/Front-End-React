@@ -59,6 +59,11 @@ class SingleTripView extends React.Component {
         e.preventDefault();
         this.props.editTrip(trip);
     }
+
+    routeToTrips = e => {
+        e.preventDefault();
+        this.props.history.push('/trips')
+    }
     
     render() {
         if (!localStorage.getItem('token')) {
@@ -85,6 +90,7 @@ class SingleTripView extends React.Component {
                     trip={this.state.trip}
                     isEditingTrip={this.props.isEditingTrip}
                     toggleEditTrip={this.props.toggleEditTrip}
+                    routeToTrips={this.routeToTrips}
                 />
             </>
         )

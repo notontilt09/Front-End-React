@@ -190,5 +190,5 @@ export const editTrip = trip => dispatch => {
             axios.get(`${baseURL}/user/trips/${id}/all`, options)
                 .then(res => dispatch({ type: EDIT_TRIP_SUCCESS, payload: res.data }))
         })
-        .catch(err => console.log(err))
+        .catch(err => dispatch({ type: EDIT_TRIP_FAIL, payload: err }))
 }
