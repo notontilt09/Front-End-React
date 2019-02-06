@@ -172,7 +172,7 @@ const reducer = (state = initialState, action) =>{
         case TOGGLE_EDIT_USER:
             return {
                 ...state,
-                isEditingUser: true,
+                isEditingUser: !state.isEditingUser,
                 isAddingTrip: false,
                 isEditingTrip: false
             }

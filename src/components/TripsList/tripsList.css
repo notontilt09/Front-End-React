@@ -70,12 +70,15 @@
     margin: 20px auto;
 }
 
-.edit-user-form label {
-    margin: 10px 0 5px 0;
+.edit-user-btns {
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.edit-user-form button {
-    margin-top: 10px;
+.edit-user-form label {
+    margin: 10px 0 5px 0;
 }
 
 .add-trip-form {

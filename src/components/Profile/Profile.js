@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../TripsList/tripsList.css'
+
 const Profile = props => {
     return (
         <>
@@ -17,7 +19,10 @@ const Profile = props => {
         }
         {props.isEditingUser &&
             <div className='editing-user'>
-                <form onSubmit={(e) => props.handleEditUserSubmit(e, props.user)} className='edit-user-form'>
+                <form 
+                    onSubmit={(e) => props.handleEditUserSubmit(e, props.user)} 
+                    className='edit-user-form'
+                >
                     <label htmlFor='name'>Name</label>
                     <input 
                         onChange={props.handleEditUserChanges} 
@@ -52,8 +57,11 @@ const Profile = props => {
                         name='tagline' 
                         value={props.user.tagline} 
                     />
-                    <button type="submit">Save Changes</button>
+                    <div className='edit-user-btns'>
+                        <button type="submit">Save Changes</button>
+                    </div>
                 </form>
+                
             </div>
         }
         </>
