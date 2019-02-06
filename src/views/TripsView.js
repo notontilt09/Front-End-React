@@ -65,7 +65,7 @@ class TripsView extends React.Component {
             );
         } else {
             return (
-                <Loader type="Puff" color="purple" height={80} width={80} />
+                <h2>There are no trips for this guide.  Why not start adding some?</h2>
             )
         }
     }

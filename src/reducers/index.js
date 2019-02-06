@@ -145,7 +145,8 @@ const reducer = (state = initialState, action) =>{
                 user: {
                     username: '',
                     password: ''
-                }
+                },
+                trips: []
             }
         case GET_TRIPS_START:
             return {

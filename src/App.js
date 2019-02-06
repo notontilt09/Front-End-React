@@ -18,19 +18,18 @@ class App extends Component {
     }
   }
 
-  routeToLogin = e => {
-    e.preventDefault();
-    console.log('1');
-    this.props.history.push('/login');
-    console.log('2');
-  }
+  // routeToLogin = e => {
+  //   console.log('here');
+  //   this.props.history.push('/login');
+
+  // }
 
 
   render() {
     return (
       <div className="App">
         {this.props.isLoggedIn && 
-          <button onClick={this.routeToLogin}>Logout</button>
+          <Link to='/login'><button>Logout</button></Link>
         }
         <Route exact path='/' component={Test} />
         <Route path='/login' component={LoginView} />
