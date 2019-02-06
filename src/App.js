@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import LoginView from './views/LoginView';
 import TripsView from './views/TripsView';
-import Test from './views/Test';
+import Landing from './views/Landing';
 import SingleTripView from './views/SingleTripView'
 import { logout } from './actions'
 
@@ -24,7 +24,7 @@ class App extends Component {
         {localStorage.getItem('token') &&
           <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link>
         }
-        <Route exact path='/' component={Test} />
+        <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={LoginView} />
         <Route exact path='/trips' component={TripsView} />
         <Route path='/trips/:id' component={SingleTripView} />
