@@ -31,7 +31,11 @@ const Login = props => {
                         placeholder="password" 
                     />
                     <button type="submit">Login</button>
-                    {props.isLoggingIn && <Loader type="Puff" color="purple" height={40} width={40} />}
+                    {props.isLoggingIn && 
+                        <div className='login-spinner'>
+                            <Loader className="login-spinner" color='purple' type="Puff" height={80} width={80} />
+                        </div>
+                    }
                 </form>
                 <form onSubmit={(e) => props.handleRegister(e, props.newUser)} className='register'>
                     <input 
@@ -99,7 +103,11 @@ const Login = props => {
                     />
                     
                     <button type='submit'>Create Account</button>
-                    {props.isRegistering && <Loader type="Puff" color="purple" height={40} width={40} />}
+                    {props.isRegistering && 
+                        <div className='login-spinner'>
+                            <Loader className="login-spinner" color='purple' type="Puff" height={80} width={80} />
+                        </div>
+                    }
                 </form>
           </div>
           
