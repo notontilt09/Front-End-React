@@ -29,7 +29,7 @@
 }
 
 .profile-header button {
-    margin-left: 25%;
+    margin-left: 40%;
     font-size: 16px;
     border-radius: 20px;
     border: none;
@@ -37,6 +37,15 @@
     padding: 5px 20px;
     background: #BD10E0;
     color: white;
+    opacity: 0.5;
+}
+
+.profile-header button:hover {
+    opacity: 1;
+}
+
+.top-info {
+    display: flex;
 }
 
 .edit-user-form {
