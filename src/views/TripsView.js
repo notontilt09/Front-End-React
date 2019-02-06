@@ -13,6 +13,7 @@ import {
     addTrip   
 } from '../actions'
 import TripsList from '../components/TripsList/TripsList'
+import logo from '../images/logo.png'
 
 class TripsView extends React.Component {
     componentDidMount() {
@@ -40,10 +41,13 @@ class TripsView extends React.Component {
     render() {
         if (!localStorage.getItem('token')) {
             return (
-                <>
-                <h1>Please Log In.</h1>
-                <Link to='/login'><button>Login</button></Link>
-                </>
+                <div className='please-login'>
+                    <img src={logo} alt='main-logo' />
+                    <h2>Please Log In.</h2>
+                    <Link className='login-btn' to='/login'>
+                        <button>Login</button>
+                    </Link>
+                </div>
             )
         }
         if (this.props.trips) {

@@ -45,7 +45,7 @@ class LoginView extends React.Component {
     }
 
     render() {
-        return (
+        return ( 
             <Login 
                 history={this.props.history} 
                 isRegistering={this.props.isRegistering}
@@ -55,7 +55,8 @@ class LoginView extends React.Component {
                 handleRegisterChanges={this.handleRegisterChanges}
                 handleLoginChanges={this.handleLoginChanges}
                 newUser={this.props.newUser}
-                user={this.props.user}  
+                user={this.props.user} 
+                isLoggedIn={this.isLoggedIn} 
             />
         );
     } 
@@ -66,6 +67,7 @@ const mapStateToProps = state => ({
     isLoggingIn: state.isLoggingIn,
     newUser: state.newUser,
     user: state.user,
+    isLoggedIn: state.isLoggedIn
 })
 
 export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser, logout })(LoginView);

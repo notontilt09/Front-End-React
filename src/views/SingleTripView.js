@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { getTrips, toggleEditTrip, editTrip, deleteTrip, getUser, toggleEditUser, handleEditUserChanges, editUser } from '../actions'
 import Trip from '../components/Trip/Trip'
 import Profile from '../components/Profile/Profile'
+import logo from '../images/logo.png'
 
 class SingleTripView extends React.Component {
     constructor(props){
@@ -70,10 +71,13 @@ class SingleTripView extends React.Component {
     render() {
         if (!localStorage.getItem('token')) {
             return (
-                <>
-                <h1>Please Log In.</h1>
-                <Link to='/login'><button>Login</button></Link>
-                </>
+                <div className='please-login'>
+                    <img src={logo} alt='main-logo' />
+                    <h2>Please Log In.</h2>
+                    <Link className='login-btn' to='/login'>
+                        <button>Login</button>
+                    </Link>
+                </div>
             )
         }
         return (
