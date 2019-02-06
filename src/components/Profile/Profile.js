@@ -10,9 +10,8 @@ const Profile = props => {
             <div className='profile'>
                 <div className='profile-header'>
                     <h2 className='trips-title'>{props.user.name}</h2>
-                    <h4>{props.user.age} years old,</h4>
-                    <h4>{props.user.title}</h4>
-                    <button onClick={props.toggleEditUser}>Edit User</button>
+                    <h4>{props.user.age} years old &middot; {props.user.title}</h4>
+                    <button onClick={props.toggleEditUser}>&#9998; Edit User</button>
                 </div>
                 <h4>{props.user.careerLength} as a private and professional guide</h4>
                 <p>{props.user.tagline}</p>

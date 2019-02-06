@@ -1,6 +1,9 @@
 .profile {
     margin: 20px auto;
     width: 80%;
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px lightgray;
+    padding: 20px 20px;
 }
 
 .profile h3 {
@@ -22,13 +25,21 @@
 }
 
 .profile-header h4 {
-    margin-right: 5px;
-    font-style: italic;
+    margin-right: 1%;
 }
 
 .profile-header button {
-    margin-left: 20px;
+    margin-left: 25%;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 20px;
+    background: #BD10E0;
+    color: white;
 }
+
+
 
 .edit-user-form {
     display: flex;
