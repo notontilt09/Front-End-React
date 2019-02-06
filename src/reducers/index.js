@@ -61,7 +61,7 @@ const initialState = {
         username: '',
         password: ''
     },
-    isLoggedIn: false,
+    isLoggedIn: true,
     fetchingTrips: false,
     trips: [],
     loggedInUser: {},

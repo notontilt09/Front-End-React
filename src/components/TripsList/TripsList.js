@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment';
 
 import Profile from '../Profile/Profile'
 import AddTripForm from './AddTripForm'
@@ -35,6 +36,7 @@ const TripsList = props => {
                             <th>Trip Title</th>
                             <th>Trip Description</th>
                             <th>Trip Thumbnail</th>
+                            <th>Last Updated</th>
                             <th>Trip Details</th>
                         </tr>
                         {props.trips.map(trip => 
@@ -42,6 +44,7 @@ const TripsList = props => {
                                     <td><h5>{trip.title}</h5></td>
                                     <td><h5>{trip.description}</h5></td>
                                     <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
+                                    <td><h5>{moment(trip.updated_at).fromNow()}</h5></td>
                                     <td><Link to={`/trips/${trip.id}`}><button>View Trip Details</button></Link></td>
                                 </tr>
                      )}
