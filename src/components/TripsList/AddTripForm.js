@@ -22,7 +22,7 @@ const AddTripForm = props => {
                     name='designation'
                     onChange={props.handleAddTripChanges}
                     value={props.newTrip.designation}>
-                    <option>Public</option>
+                    <option>Professional</option>
                     <option>Private</option>
                 </select>
             <label htmlFor='type'>Type of Trip</label>

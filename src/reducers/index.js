@@ -40,7 +40,7 @@ const emptyNewUser = {
 const emptyNewTrip = {
     title: '',
     description: '',
-    designation: 'Private',
+    designation: 'Professional',
     type: '',
     duration: '',
     img_url: ''

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { getTrips, getUser } from '../actions'
 import Trip from '../components/Trip/Trip'
@@ -31,8 +32,10 @@ class SingleTripView extends React.Component {
 
     onLoad = () => {
         const id = localStorage.getItem('userId');
-        this.props.getUser(id);
-        this.props.getTrips(id);
+        if (id) {
+            this.props.getUser(id);
+            this.props.getTrips(id);
+        }
     }
 
     findTrip = () => {
@@ -43,8 +46,16 @@ class SingleTripView extends React.Component {
     
 
     render() {
+        if (!localStorage.getItem('token')) {
+            return (
+                <>
+                <h1>Please Log In.</h1>
+                <Link to='/login'><button>Login</button></Link>
+                </>
+            )
+        }
         return (
-            <h1>{this.state.trip.title}</h1>
+            <Trip trip={this.state.trip} />
         )
     }
 }

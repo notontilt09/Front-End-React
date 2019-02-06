@@ -2,8 +2,6 @@ import React from 'react'
 
 import './trip.css'
 
-
-
 const Trip = props => {
     return (
        <div className='trip'>
@@ -12,6 +10,7 @@ const Trip = props => {
          <div className="trip-image">
             <img src={props.trip.img_url} alt={props.trip.title} />
          </div>
+         <button onClick={props.deleteTrip}>Delete Trip</button>
        </div>
     );
 }

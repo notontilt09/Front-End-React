@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Trip from '../Trip/Trip'
 import Profile from '../Profile/Profile'
@@ -35,14 +36,15 @@ const TripsList = props => {
                             <th>Trip Title</th>
                             <th>Trip Location</th>
                             <th>Trip Thumbnail</th>
+                            <th>Trip Details</th>
                         </tr>
                         {props.trips.map(trip => 
-                        <tr key={trip.id}>
-                            <td><h5>{trip.title}</h5></td>
-                            <td><h5>{trip.description}</h5></td>
-                            <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
-                        </tr>
-                        // <Trip key={trip.id} trip={trip} />
+                                <tr onClick={() => console.log('here')} key={trip.id}>
+                                    <td><h5>{trip.title}</h5></td>
+                                    <td><h5>{trip.description}</h5></td>
+                                    <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
+                                    <td><Link to={`/trips/${trip.id}`}><button>View Trip Details</button></Link></td>
+                                </tr>
                      )}
                     </tbody>
                 </table>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import Loader from 'react-loader-spinner'
+import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 import { 
     getTrips, 
@@ -17,8 +18,10 @@ import TripsList from '../components/TripsList/TripsList'
 class TripsView extends React.Component {
     componentDidMount() {
         const id = localStorage.getItem('userId');
-        this.props.getUser(id);
-        this.props.getTrips(id);
+        if (id) {
+            this.props.getUser(id);
+            this.props.getTrips(id);
+        }
     }
 
     toggleEditUser = () => {
@@ -36,7 +39,19 @@ class TripsView extends React.Component {
         this.props.addTrip(trip);
     }
 
+    routeToTrip = () => {
+
+    }
+
     render() {
+        if (!localStorage.getItem('token')) {
+            return (
+                <>
+                <h1>Please Log In.</h1>
+                <Link to='/login'><button>Login</button></Link>
+                </>
+            )
+        }
         if (this.props.trips) {
             return (
                 <TripsList 
