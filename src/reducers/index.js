@@ -172,7 +172,9 @@ const reducer = (state = initialState, action) =>{
         case TOGGLE_EDIT_USER:
             return {
                 ...state,
-                isEditingUser: true
+                isEditingUser: true,
+                isAddingTrip: false,
+                isEditingTrip: false
             }
         case EDIT_USER_SUCCESS:
             return {
@@ -184,7 +186,8 @@ const reducer = (state = initialState, action) =>{
             return {
                 ...state,
                 isAddingTrip: !state.isAddingTrip,
-                newTrip: emptyNewTrip
+                newTrip: emptyNewTrip,
+                isEditingUser: false
             }
         case ADD_TRIP_SUCCESS:
             return {
@@ -196,7 +199,8 @@ const reducer = (state = initialState, action) =>{
         case TOGGLE_EDIT_TRIP:
             return {
                 ...state,
-                isEditingTrip: !state.isEditingTrip
+                isEditingTrip: !state.isEditingTrip,
+                isEditingUser: false
             }
         case EDIT_TRIP_SUCCESS:
             return {
