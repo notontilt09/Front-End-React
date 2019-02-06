@@ -8,3 +8,25 @@
     height: auto;
 }
 
+.edit-trip-form {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-trip-form label {
+    margin-bottom: 5px;
+}
+
+.edit-trip-form input {
+    margin-bottom: 10px;
+}
+
+.edit-trip-btn-container {
+    display: flex;
+    width: 25%;
+    margin: 20px auto;
+    justify-content: space-evenly;
+}
+

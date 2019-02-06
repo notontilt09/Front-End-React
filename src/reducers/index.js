@@ -198,6 +198,12 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 isEditingTrip: !state.isEditingTrip
             }
+        case EDIT_TRIP_SUCCESS:
+            return {
+                ...state,
+                isEditingTrip: false,
+                trips: action.payload
+            }
         default: 
             return state
     }

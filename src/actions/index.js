@@ -185,6 +185,10 @@ export const editTrip = trip => dispatch => {
     }
     dispatch({ type: EDIT_TRIP_START })
     axios.put(`${baseURL}/user/trips/${id}/${trip.id}`, trip, options)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res);
+            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+                .then(res => dispatch({ type: EDIT_TRIP_SUCCESS, payload: res.data }))
+        })
         .catch(err => console.log(err))
 }
