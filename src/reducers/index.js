@@ -70,7 +70,8 @@ const initialState = {
     newTrip: emptyNewTrip,
     isEditingTrip: false,
     savingUserChanges: false,
-    error: ''
+    error: '',
+    savingTripEdits: false
 };
 
 const reducer = (state = initialState, action) =>{
@@ -216,16 +217,23 @@ const reducer = (state = initialState, action) =>{
                 isEditingTrip: !state.isEditingTrip,
                 isEditingUser: false
             }
+        case EDIT_TRIP_START:
+            return {
+                ...state,
+                savingTripEdits: true
+            }
         case EDIT_TRIP_SUCCESS:
             return {
                 ...state,
                 isEditingTrip: false,
-                trips: action.payload
+                trips: action.payload,
+                savingTripEdits: false
             }
         case EDIT_TRIP_FAIL:
             return {
                 ...state,
-                isEditingTrip: false
+                isEditingTrip: false,
+                savingTripEdits: false
             }
         case DELETE_TRIP_SUCCESS:
             return {

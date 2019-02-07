@@ -98,6 +98,7 @@ class SingleTripView extends React.Component {
                     isEditingTrip={this.props.isEditingTrip}
                     toggleEditTrip={this.props.toggleEditTrip}
                     routeToTrips={this.routeToTrips}
+                    savingTripEdits={this.props.savingTripEdits}
                 />
             </>
         )
@@ -109,7 +110,8 @@ const mapStateToProps = state => ({
     user: state.loggedInUser,
     isEditingUser: state.isEditingUser,
     isEditingTrip: state.isEditingTrip,
-    savingUserChanges: state.savingUserChanges
+    savingUserChanges: state.savingUserChanges,
+    savingTripEdits: state.savingTripEdits
 })
 
 export default connect(mapStateToProps, { getUser, toggleEditTrip, editTrip, deleteTrip, getTrips, toggleEditUser, handleEditUserChanges, editUser })(SingleTripView)

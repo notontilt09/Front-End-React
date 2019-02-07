@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from 'react-loader-spinner'
 
 import './trip.css'
 
@@ -95,6 +96,12 @@ class Trip extends React.Component {
                   <button className='save-edits' type='submit'>Save Changes</button>
                   <button className='cancel-edits' onClick={this.props.toggleEditTrip}>Cancel</button>
                </div>
+               {this.props.savingTripEdits && 
+                  <div className='edit-trip-loader'>
+                     <Loader type="Puff" color="purple" height={20} width={20}/>
+                  </div>
+                  
+               }
             </form>
 
          )
