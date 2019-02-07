@@ -36,6 +36,9 @@ const Login = props => {
                             <Loader className="login-spinner" color='purple' type="Puff" height={80} width={80} />
                         </div>
                     }
+                    {props.error &&
+                        <h4 className='error'>We cannot find a user with those credentials.</h4>
+                    }
                 </form>
                 <form onSubmit={(e) => props.handleRegister(e, props.newUser)} className='register'>
                     <input 

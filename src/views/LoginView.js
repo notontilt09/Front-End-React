@@ -60,6 +60,7 @@ class LoginView extends React.Component {
                 newUser={this.props.newUser}
                 user={this.props.user} 
                 isLoggedIn={this.isLoggedIn} 
+                error={this.props.error}
             />
         );
     } 
@@ -70,7 +71,8 @@ const mapStateToProps = state => ({
     isLoggingIn: state.isLoggingIn,
     newUser: state.newUser,
     user: state.user,
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.isLoggedIn,
+    error: state.error
 })
 
 export default connect(mapStateToProps, { registerUser, handleRegisterChanges, handleLoginChanges, loginUser, logout })(LoginView);

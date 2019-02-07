@@ -58,8 +58,9 @@
     text-align: center;
 }
 
-.pw-mismatch, .too-short {
+.pw-mismatch, .too-short, .error {
     font-size: 14px;
     color: red;
 }
+
 

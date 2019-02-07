@@ -70,6 +70,7 @@ const initialState = {
     newTrip: emptyNewTrip,
     isEditingTrip: false,
     savingUserChanges: false,
+    error: ''
 };
 
 const reducer = (state = initialState, action) =>{
@@ -125,18 +126,21 @@ const reducer = (state = initialState, action) =>{
         case LOGIN_USER_START:
             return {
                 ...state,
-                isLoggingIn: true
+                isLoggingIn: true,
+                error: ''
             }
         case LOGIN_USER_SUCCESS:
             return {
                 ...state,
                 isLoggingIn: false,
                 isLoggedIn: true,
+                error: ''
             }
         case LOGIN_USER_FAIL:
             return {
                 ...state,
-                isLoggingIn: false
+                isLoggingIn: false,
+                error: action.payload
             }
         case LOGOUT:
             return {

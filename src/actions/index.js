@@ -84,8 +84,7 @@ export const getTrips = id => dispatch => {
         },
     }
     dispatch({ type: GET_TRIPS_START})
-    axios.get(`${baseURL}/user/trips/${id}/all`, options)
-    // axios.get(`${baseURL}/user/trips/all`, options)
+    axios.get(`${baseURL}/user/trips/all`, options)
         .then(res => {
             dispatch({ type: GET_TRIPS_SUCCESS, payload: res.data })
         })
@@ -156,10 +155,10 @@ export const addTrip = trip => dispatch => {
         },
     }
     dispatch({ type: ADD_TRIP_START })
-    axios.post(`${baseURL}/user/trips/${id}/create`, trip, options)
+    axios.post(`${baseURL}/user/trips/create`, trip, options)
         .then(res => {
             console.log(res)
-            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+            axios.get(`${baseURL}/user/trips/all`, options)
                 .then(res => dispatch({ type: ADD_TRIP_SUCCESS, payload: res.data }))
         })
         .catch(err => console.log(err))
@@ -177,7 +176,7 @@ export const deleteTrip = trip => dispatch => {
     axios.delete(`${baseURL}/user/trips/${trip.id}`, options)
         .then(res => {
             console.log(res);
-            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+            axios.get(`${baseURL}/user/trips/all`, options)
                 .then(res => {
                     console.log(res);
                     dispatch({ type: DELETE_TRIP_SUCCESS, payload: res.data })
@@ -196,10 +195,10 @@ export const editTrip = trip => dispatch => {
         },
     }
     dispatch({ type: EDIT_TRIP_START })
-    axios.put(`${baseURL}/user/trips/${id}/${trip.id}`, trip, options)
+    axios.put(`${baseURL}/user/trips/${trip.id}`, trip, options)
         .then(res => {
             console.log(res);
-            axios.get(`${baseURL}/user/trips/${id}/all`, options)
+            axios.get(`${baseURL}/user/trips/all`, options)
                 .then(res => dispatch({ type: EDIT_TRIP_SUCCESS, payload: res.data }))
         })
         .catch(err => dispatch({ type: EDIT_TRIP_FAIL, payload: err }))
