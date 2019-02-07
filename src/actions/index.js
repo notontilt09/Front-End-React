@@ -93,7 +93,7 @@ export const getTrips = id => dispatch => {
 
 export const logout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('userId');
+    localStorage.removeItem('userId'); 
     return {
         type: LOGOUT
     }
