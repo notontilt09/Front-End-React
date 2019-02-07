@@ -48,7 +48,7 @@ const TripsList = props => {
                                     <tr key={trip.id}>
                                         <td><h5 className="trip-title">{trip.title}</h5></td>
                                         <td><h5 className='trip-description'>{trip.description}</h5></td>
-                                        <td><h5 className='trip-duration'>{`${trip.duration} days`}</h5></td>
+                                        <td><h5 className='trip-duration'>{`${trip.duration} hour`}{Number(trip.duration) > 1 && 's'}</h5></td>
                                         <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
                                         <td><h5 className='trip-updated-at'>{moment(trip.updated_at).fromNow()}</h5></td>
                                         <td><Link to={`/trips/${trip.id}`}><button className='view-details'>View Trip</button></Link></td>

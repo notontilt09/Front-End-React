@@ -34,7 +34,7 @@ class Trip extends React.Component {
             <div className='trip'>
                <h3>{this.props.trip.title}</h3>
                <h4>{this.props.trip.description}</h4>
-               <h5>{`${this.props.trip.duration} day trip`}</h5>
+               <h5>{`${this.props.trip.duration} hour trip`}</h5>
                <div className="trip-image">
                   <img src={this.props.trip.img_url} alt={this.props.trip.title} />
                </div>
