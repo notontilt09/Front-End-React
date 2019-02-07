@@ -85,6 +85,7 @@ export const getTrips = id => dispatch => {
     }
     dispatch({ type: GET_TRIPS_START})
     axios.get(`${baseURL}/user/trips/${id}/all`, options)
+    // axios.get(`${baseURL}/user/trips/all`, options)
         .then(res => {
             dispatch({ type: GET_TRIPS_SUCCESS, payload: res.data })
         })

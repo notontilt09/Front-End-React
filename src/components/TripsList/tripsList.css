@@ -13,16 +13,59 @@
 }
 
 .trips-list table, .trips-list th, .trips-list td {
-    border: 1px solid black;
     text-align: center;
     vertical-align: middle;
 }
 
+.trips-list th {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 0;
+    color: white;
+    background: #661FFF;
+}
 
+.trips-list table {
+    border: 1px solid lightgray;
+}
 
 .trips-list table img {
     width: 100px;
     height: 80px;
+}
+
+.trips-list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.trip-title {
+    color: #661FFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.trip-description {
+    font-weight: bold;
+}
+
+.trip-updated-at {
+    font-style: italic
+}
+
+.view-details {
+    background: #BD10E0;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.75;
+}
+
+.view-details:hover {
+    opacity: 1;
 }
 
 .trips-title {
