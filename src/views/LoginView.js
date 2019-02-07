@@ -26,7 +26,7 @@ class LoginView extends React.Component {
 
     handleRegister = (e, newUser) => {
         e.preventDefault();
-        if (newUser.password === newUser.pw2) {
+        if (newUser.password === newUser.pw2 && newUser.password.length > 7) {
             let regUser = {
                 ...newUser, 
                 age: parseInt(newUser.age)
@@ -35,7 +35,7 @@ class LoginView extends React.Component {
             console.log(regUser);
             this.props.registerUser(regUser)
         } else {
-            alert('Passwords do not match!')
+            alert('Please fix your passwords!')
         }
     }
 

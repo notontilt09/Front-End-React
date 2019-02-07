@@ -62,6 +62,9 @@ const Login = props => {
                         name='password' 
                         placeholder="Pick a strong password" 
                     />
+                    {props.newUser.password.length > 0 && props.newUser.password.length  < 8 &&
+                        <h4 className='too-short'>Password Too Short</h4>
+                    }
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.pw2} 
@@ -70,6 +73,9 @@ const Login = props => {
                         name='pw2' 
                         placeholder="Confirm Password" 
                     />
+                    {props.newUser.password !== props.newUser.pw2 &&
+                        <h4 className='pw-mismatch'>Passwords do not match</h4>
+                    }
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.age} 

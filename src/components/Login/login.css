@@ -15,6 +15,13 @@
     margin: 10px 0;
     width: 100%;
     font-size: 20px;
+    border-radius: 30px;
+    padding-left: 3%
+}
+
+.login-forms textarea {
+    font-size: 20px;
+    width: 102%
 }
 
 .login-forms button {
@@ -24,7 +31,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background: #661FFF;
-    font-size: 30px;
+    font-size: 24px;
     color: white;
     border-radius: 60px;
     border: none;
@@ -51,5 +58,10 @@
 
 .login-spinner {
     text-align: center;
+}
+
+.pw-mismatch, .too-short {
+    font-size: 14px;
+    color: red;
 }
 
