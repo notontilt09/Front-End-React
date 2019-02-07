@@ -1,20 +1,30 @@
 import React from 'react'
 
-// import '../TripsList/tripsList.css'
+import profilePic from '../../images/Allysia.png'
 import './profile.css'
+
 
 const Profile = props => {
     return (
         <>
         {!props.isEditingUser &&
             <div className='profile'>
-                <div className='profile-header'>
-                    <h2 className='trips-title'>{props.user.name}</h2>
-                    <h4>{props.user.age} years old &middot; {props.user.title}</h4>
-                    <button onClick={props.toggleEditUser}>&#9998; Edit User</button>
+                <div className='profile-container'>
+                    <div className='profile-picture'>
+                        <img className='profile-pic' src={profilePic} alt='profile-pic' />
+                    </div>
+                    <div className='profile-info'>
+                        <div className='profile-header'>
+                            <h2 className='trips-title'>{props.user.name}</h2>
+                            <h4>{props.user.age} years old &middot; {props.user.title}</h4>
+                        </div>
+                        <h4>{props.user.careerLength} as a private and professional guide</h4>
+                        <p>{props.user.tagline}</p>
+                    </div>
+                    <div className='edit-profile-btn'>
+                        <button onClick={props.toggleEditUser}>&#9998;</button>
+                    </div> 
                 </div>
-                <h4>{props.user.careerLength} as a private and professional guide</h4>
-                <p>{props.user.tagline}</p>
             </div>
         }
         {props.isEditingUser &&

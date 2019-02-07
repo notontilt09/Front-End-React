@@ -80,30 +80,49 @@
     padding-left: 3px;
 }
 
-.edit-user-btn {
-    width: 50%;
-    margin: 10px auto;
-    text-align: center;
-}
-
-.edit-user-btn button {
-    background: #BD10E0;
-    color: white;
-    font-size: 24px;
-    border: none;
-    border-radius: 50px;
-    padding: 5px 20px;
-    cursor: pointer;
-}
-
-.edit-user-btn button:hover {
-    background: #F5A623;
-}
-
 .editing-user {
     width: 60%;
     margin: 20px auto;
     border: 1px solid lightgray;
     box-shadow: 5px 5px lightgray;
+}
+
+.profile-container {
+    display: flex;
+}
+
+.profile-picture {
+    height: 100%;
+    width: 20%;
+}
+
+.profile-picture img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 100px;
+}
+
+.profile-info {
+    width: 60%;
+    margin-left: 5%;
+}
+
+.edit-profile-btn {
+    margin-left: 10%;
+}
+
+.edit-profile-btn button {
+    background: #BD10E0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.edit-profile-btn button:hover {
+    background: #F5A623;
 }
 
