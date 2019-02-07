@@ -8,6 +8,7 @@ import AddTripForm from './AddTripForm'
 import './tripsList.css'
 
 const TripsList = props => {
+    console.log(props);
     return (
         <>
             <Profile 
@@ -16,6 +17,7 @@ const TripsList = props => {
                 toggleEditUser={props.toggleEditUser}
                 handleEditUserChanges={props.handleEditUserChanges}
                 handleEditUserSubmit={props.handleEditUserSubmit}
+                savingUserChanges={props.savingUserChanges}
             />
             <div className='trips-list'>
                 <button className="toggler-btn"

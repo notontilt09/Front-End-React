@@ -64,6 +64,7 @@ class TripsView extends React.Component {
                     handleAddTripChanges={this.props.handleAddTripChanges}
                     newTrip={this.props.newTrip}
                     handleAddTrip={this.handleAddTrip}
+                    savingUserChanges={this.props.savingUserChanges}
                 />
             );
         } else {
@@ -79,7 +80,8 @@ const mapStateToProps = state => ({
     user: state.loggedInUser,
     isEditingUser: state.isEditingUser,
     isAddingTrip: state.isAddingTrip,
-    newTrip: state.newTrip
+    newTrip: state.newTrip,
+    savingUserChanges: state.savingUserChanges
 })
 
 export default connect(mapStateToProps, { getTrips, addTrip, handleAddTripChanges, toggleAddingTrip, editUser, getUser, toggleEditUser, handleEditUserChanges })(TripsView);

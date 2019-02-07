@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from 'react-loader-spinner'
 
 import profilePic from '../../images/Allysia.png'
 import './profile.css'
@@ -69,6 +70,9 @@ const Profile = props => {
                     />
                     <div className='save-changes'>
                         <button type="submit">Save Changes</button>
+                        {props.savingUserChanges &&
+                        <Loader type="Puff" color="purple" height={20} width={20}/>
+                        }
                     </div>
                 </form>
                 

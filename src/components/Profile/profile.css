@@ -140,6 +140,7 @@
     border-radius: 50px;
     padding: 5px 10px;
     opacity: 0.5;
+    margin-bottom: 20px;
 }
 
 .save-changes button:hover {
