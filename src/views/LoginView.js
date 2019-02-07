@@ -26,7 +26,7 @@ class LoginView extends React.Component {
 
     handleRegister = (e, newUser) => {
         e.preventDefault();
-        if (newUser.password === newUser.pw2 && newUser.password.length > 7) {
+        if (newUser.password === newUser.pw2 && newUser.password.length > 7 && newUser.username.length > 2) {
             let regUser = {
                 ...newUser, 
                 age: parseInt(newUser.age)
@@ -37,6 +37,8 @@ class LoginView extends React.Component {
             alert('Passwords do not match!');
         } else if (newUser.password.length < 8) {
             alert('Password is too short!');
+        } else if (newUser.username.length < 3) {
+            alert('Username must be at least 3 characters!');
         }
     }
 
