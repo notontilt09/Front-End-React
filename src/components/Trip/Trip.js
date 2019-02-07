@@ -33,6 +33,7 @@ class Trip extends React.Component {
             <div className='trip'>
                <h3>{this.props.trip.title}</h3>
                <h4>{this.props.trip.description}</h4>
+               <h5>{`${this.props.trip.duration} day trip`}</h5>
                <div className="trip-image">
                   <img src={this.props.trip.img_url} alt={this.props.trip.title} />
                </div>
@@ -64,6 +65,14 @@ class Trip extends React.Component {
                   name='description' 
                   onChange={this.handleChanges} 
                   value={this.state.trip.description} 
+               />
+               <label htmlFor='duration'>Duration</label>
+               <input 
+                  required
+                  type='number' 
+                  name='duration' 
+                  onChange={this.handleChanges} 
+                  value={this.state.trip.duration} 
                />
                <label htmlFor='img_url'>Image URL</label>
                <input 
