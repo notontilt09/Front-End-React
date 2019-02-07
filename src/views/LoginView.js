@@ -32,10 +32,11 @@ class LoginView extends React.Component {
                 age: parseInt(newUser.age)
             };
             delete regUser.pw2;
-            console.log(regUser);
             this.props.registerUser(regUser)
-        } else {
-            alert('Please fix your passwords!')
+        } else if (newUser.password !== newUser.pw2) {
+            alert('Passwords do not match!');
+        } else if (newUser.password.length < 8) {
+            alert('Password is too short!');
         }
     }
 
