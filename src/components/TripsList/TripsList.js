@@ -20,19 +20,20 @@ const TripsList = props => {
                 savingUserChanges={props.savingUserChanges}
             />
             <div className='trips-list'>
-                <button className="toggler-btn"
-                    onClick={props.toggleAddingTrip}
-                >
-                {props.isAddingTrip ? 'Cancel' : 'Create Trip'}
-                </button>
-                {props.isAddingTrip &&
-                    <AddTripForm 
-                        newTrip={props.newTrip}
-                        handleAddTripChanges={props.handleAddTripChanges}
-                        handleAddTrip={props.handleAddTrip}    
-                    />
-                }
-                {props.trips.length > 0 &&
+                <div className='trips-list-header'>
+                    <button className="toggler-btn" onClick={props.toggleAddingTrip}>
+                        {props.isAddingTrip ? 'Cancel' : 'New Trip'}
+                    </button>
+                    {props.isAddingTrip &&
+                        <AddTripForm 
+                            newTrip={props.newTrip}
+                            handleAddTripChanges={props.handleAddTripChanges}
+                            handleAddTrip={props.handleAddTrip}    
+                        />
+                    }
+                </div>
+                
+                {props.trips.length > 0 && !props.isAddingTrip &&
                     <table>
                         <tbody>
                             <tr>

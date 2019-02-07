@@ -51,7 +51,7 @@ const AddTripForm = props => {
                     type='text' 
                     name='img_url' 
                 />
-            <button type='submit'>Add To My Trips</button>
+            <button className='add-trip-btn' type='submit'>Add To My Trips</button>
         </form>
     );
 }
