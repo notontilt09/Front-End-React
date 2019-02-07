@@ -83,8 +83,8 @@ class Trip extends React.Component {
                   <option>Professional</option>
                </select>
                <div className='edit-trip-btn-container'>
-                  <button type='submit'>Save Changes</button>
-                  <button onClick={this.props.toggleEditTrip}>Cancel</button>
+                  <button className='save-edits' type='submit'>Save Changes</button>
+                  <button className='cancel-edits' onClick={this.props.toggleEditTrip}>Cancel</button>
                </div>
             </form>
 

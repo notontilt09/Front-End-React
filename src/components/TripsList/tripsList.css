@@ -23,6 +23,7 @@
     padding: 20px 0;
     color: white;
     background: #661FFF;
+    opacity: 0.75;
 }
 
 .trips-list table {
@@ -50,7 +51,8 @@
 }
 
 .trip-updated-at {
-    font-style: italic
+    font-style: italic;
+    font-size: 12px;
 }
 
 .view-details {
