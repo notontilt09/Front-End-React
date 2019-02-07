@@ -69,7 +69,10 @@ class TripsView extends React.Component {
             );
         } else {
             return (
-                <h2>There are no trips for this guide.  Why not start adding some?</h2>
+                <div className='no-trips'>
+                    <h2>There are no trips for this guide.  Why not start adding some?</h2>
+                </div>
+                
             )
         }
     }

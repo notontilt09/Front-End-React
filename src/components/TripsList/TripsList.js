@@ -57,8 +57,10 @@ const TripsList = props => {
                         </tbody>
                     </table>
                 }
-                {!props.trips.length &&
-                    <h2>There are no trips for this user.  Try adding some!</h2>
+                {!props.trips.length && !props.isAddingTrip &&
+                    <div className='no-trips'>
+                        <h2>There are no trips for this user.  Try adding some!</h2>
+                    </div>
                 }
              </div>
         </>
