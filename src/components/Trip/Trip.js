@@ -37,9 +37,9 @@ class Trip extends React.Component {
                   <img src={this.props.trip.img_url} alt={this.props.trip.title} />
                </div>
                <div className='edit-trip-btns'>
-                  <button onClick={(e) => this.props.deleteTrip(e, this.props.trip)}>Delete Trip</button>
-                  <button onClick={this.props.toggleEditTrip}>Edit Trip</button>
-                  <button onClick={this.props.routeToTrips}>Back To Trips</button>
+                  <button className='delete-trip' onClick={(e) => this.props.deleteTrip(e, this.props.trip)}>Delete Trip</button>
+                  <button className='edit-trip' onClick={this.props.toggleEditTrip}>Edit Trip</button>
+                  <button className='route-trips' onClick={this.props.routeToTrips}>Back To Trips</button>
                </div>
             </div>
          );
@@ -83,8 +83,8 @@ class Trip extends React.Component {
                   <option>Professional</option>
                </select>
                <div className='edit-trip-btn-container'>
-                  <button type='submit'>Save Changes</button>
-                  <button onClick={this.props.toggleEditTrip}>Cancel</button>
+                  <button className='save-edits' type='submit'>Save Changes</button>
+                  <button className='cancel-edits' onClick={this.props.toggleEditTrip}>Cancel</button>
                </div>
             </form>
 

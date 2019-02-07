@@ -15,16 +15,21 @@
     margin: 10px 0;
     width: 100%;
     font-size: 20px;
+    border-radius: 30px;
+    padding-left: 3%
+}
+
+.login-forms textarea {
+    font-size: 20px;
+    width: 102%
 }
 
 .login-forms button {
-    width: 90%;
-    height: 80px;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 5px 25px;
     background: #661FFF;
-    font-size: 30px;
+    font-size: 24px;
     color: white;
     border-radius: 60px;
     border: none;
@@ -52,4 +57,10 @@
 .login-spinner {
     text-align: center;
 }
+
+.pw-mismatch, .too-short, .error {
+    font-size: 14px;
+    color: red;
+}
+
 

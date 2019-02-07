@@ -8,6 +8,7 @@ import AddTripForm from './AddTripForm'
 import './tripsList.css'
 
 const TripsList = props => {
+    console.log(props);
     return (
         <>
             <Profile 
@@ -16,37 +17,39 @@ const TripsList = props => {
                 toggleEditUser={props.toggleEditUser}
                 handleEditUserChanges={props.handleEditUserChanges}
                 handleEditUserSubmit={props.handleEditUserSubmit}
+                savingUserChanges={props.savingUserChanges}
             />
             <div className='trips-list'>
-                <button className="toggler-btn"
-                    onClick={props.toggleAddingTrip}
-                >
-                {props.isAddingTrip ? 'Cancel' : 'Create Trip'}
-                </button>
-                {props.isAddingTrip &&
-                    <AddTripForm 
-                        newTrip={props.newTrip}
-                        handleAddTripChanges={props.handleAddTripChanges}
-                        handleAddTrip={props.handleAddTrip}    
-                    />
-                }
-                {props.trips.length > 0 &&
+                <div className='trips-list-header'>
+                    <button className="toggler-btn" onClick={props.toggleAddingTrip}>
+                        {props.isAddingTrip ? 'Cancel' : 'Add New Trip'}
+                    </button>
+                    {props.isAddingTrip &&
+                        <AddTripForm 
+                            newTrip={props.newTrip}
+                            handleAddTripChanges={props.handleAddTripChanges}
+                            handleAddTrip={props.handleAddTrip}    
+                        />
+                    }
+                </div>
+                
+                {props.trips.length > 0 && !props.isAddingTrip &&
                     <table>
                         <tbody>
                             <tr>
-                                <th>Trip Title</th>
-                                <th>Trip Description</th>
-                                <th>Trip Thumbnail</th>
-                                <th>Last Updated</th>
-                                <th>Trip Details</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Thumbnail</th>
+                                <th>Updated</th>
+                                <th>Details</th>
                             </tr>
                             {props.trips.map(trip => 
                                     <tr key={trip.id}>
-                                        <td><h5>{trip.title}</h5></td>
-                                        <td><h5>{trip.description}</h5></td>
+                                        <td><h5 className="trip-title">{trip.title}</h5></td>
+                                        <td><h5 className='trip-description'>{trip.description}</h5></td>
                                         <td><img src={trip.img_url} alt='trip-thumbnail' /></td>
-                                        <td><h5>{moment(trip.updated_at).fromNow()}</h5></td>
-                                        <td><Link to={`/trips/${trip.id}`}><button>View Trip Details</button></Link></td>
+                                        <td><h5 className='trip-updated-at'>{moment(trip.updated_at).fromNow()}</h5></td>
+                                        <td><Link to={`/trips/${trip.id}`}><button className='view-details'>View Trip</button></Link></td>
                                     </tr>
                         )}
                         </tbody>

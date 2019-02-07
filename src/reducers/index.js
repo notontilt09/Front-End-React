@@ -69,6 +69,8 @@ const initialState = {
     isAddingTrip: false,
     newTrip: emptyNewTrip,
     isEditingTrip: false,
+    savingUserChanges: false,
+    error: ''
 };
 
 const reducer = (state = initialState, action) =>{
@@ -124,18 +126,21 @@ const reducer = (state = initialState, action) =>{
         case LOGIN_USER_START:
             return {
                 ...state,
-                isLoggingIn: true
+                isLoggingIn: true,
+                error: ''
             }
         case LOGIN_USER_SUCCESS:
             return {
                 ...state,
                 isLoggingIn: false,
                 isLoggedIn: true,
+                error: ''
             }
         case LOGIN_USER_FAIL:
             return {
                 ...state,
-                isLoggingIn: false
+                isLoggingIn: false,
+                error: action.payload
             }
         case LOGOUT:
             return {
@@ -179,11 +184,17 @@ const reducer = (state = initialState, action) =>{
                 isAddingTrip: false,
                 isEditingTrip: false
             }
+        case EDIT_USER_START:
+            return {
+                ...state,
+                savingUserChanges: true
+            }
         case EDIT_USER_SUCCESS:
             return {
                 ...state,
                 loggedInUser: action.payload,
-                isEditingUser: false
+                isEditingUser: false,
+                savingUserChanges: false
             }
         case TOGGLE_ADDING_TRIP:
             return {

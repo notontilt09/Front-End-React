@@ -36,11 +36,15 @@ const Login = props => {
                             <Loader className="login-spinner" color='purple' type="Puff" height={80} width={80} />
                         </div>
                     }
+                    {props.error &&
+                        <h4 className='error'>We cannot find a user with those credentials.</h4>
+                    }
                 </form>
                 <form onSubmit={(e) => props.handleRegister(e, props.newUser)} className='register'>
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.name} 
+                        autoComplete='off'
                         required 
                         type='text' 
                         name='name' 
@@ -50,10 +54,14 @@ const Login = props => {
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.username} 
                         required 
+                        autoComplete='off'
                         type='text' 
                         name='username' 
                         placeholder="Choose a username" 
                     />
+                    {props.newUser.username.length > 0 && props.newUser.username.length < 3 &&
+                        <h4 className='too-short'>Username must be at least 3 characters</h4>
+                    }
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.pw1} 
@@ -62,6 +70,9 @@ const Login = props => {
                         name='password' 
                         placeholder="Pick a strong password" 
                     />
+                    {props.newUser.password.length > 0 && props.newUser.password.length  < 8 &&
+                        <h4 className='too-short'>Password Too Short</h4>
+                    }
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.pw2} 
@@ -70,10 +81,14 @@ const Login = props => {
                         name='pw2' 
                         placeholder="Confirm Password" 
                     />
+                    {props.newUser.password !== props.newUser.pw2 &&
+                        <h4 className='pw-mismatch'>Passwords do not match</h4>
+                    }
                     <input 
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.age} 
                         required 
+                        autoComplete='off'
                         type='number' 
                         name='age' 
                         placeholder="Age" 
@@ -82,6 +97,7 @@ const Login = props => {
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.title} 
                         required 
+                        autoComplete='off'
                         type='text' 
                         name='title' 
                         placeholder="Job Title" 
@@ -90,6 +106,7 @@ const Login = props => {
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.careerLength} 
                         required 
+                        autoComplete='off'
                         type='number' 
                         name='careerLength' 
                         placeholder="Career Length" 
@@ -98,6 +115,7 @@ const Login = props => {
                         onChange={props.handleRegisterChanges} 
                         value={props.newUser.tagline} 
                         required 
+                        autoComplete='off'
                         name='tagline' 
                         placeholder="Short tagline describing yourself" 
                     />
