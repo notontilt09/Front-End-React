@@ -34,7 +34,7 @@ export const EDIT_TRIP_FAIL = 'EDIT_TRIP_FAIL';
 export const TOGGLE_EDIT_TRIP = 'TOGGLE_EDIT_TRIP';
 
 
-const baseURL = 'https://guidr-backend.herokuapp.com'
+const baseURL = 'https://guidr-backend.herokuapp.com/'
 
 export const handleRegisterChanges = e => {
     return { type: HANDLE_REGISTER_CHANGES, payload: e }
